@@ -3,7 +3,7 @@
 # http://academic.cleardefinition.com/
 # Iowa State University HCI Graduate Program/VRAC
 
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.5)
 project(LuaBind)
 
 set(CPACK_PACKAGE_VERSION_MAJOR "0")
