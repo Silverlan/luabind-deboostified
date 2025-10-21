@@ -23,7 +23,7 @@
 
 #include "test.hpp"
 
-#include <luabind/lua_include.hpp>
+#include <lua_include.hpp>
 
 #ifndef LUABIND_CPLUSPLUS_LUA
 extern "C"
