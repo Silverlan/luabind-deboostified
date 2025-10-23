@@ -29,8 +29,6 @@ module luabind;
 
 import :detail.class_registry;
 
-#define LUABIND_BUILDING
-
 
 
 /*

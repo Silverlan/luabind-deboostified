@@ -16,7 +16,6 @@ export namespace luabind {
 
 	namespace detail
 	{
-
 		template <class F, class PolicyInjectors>
 		struct function_registration : registration
 		{

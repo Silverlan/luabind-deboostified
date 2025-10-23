@@ -32,14 +32,12 @@ module luabind;
 import :detail.class_registry;
 import :detail.garbage_collector;
 
-#define LUABIND_BUILDING
-
 namespace luabind {
 	namespace detail {
 
 		LUABIND_API void push_instance_metatable(lua_State* L);
 
-		namespace {
+		//namespace {
 
 			/// @todo is this redundant with the following function? All that differs is the __gc closure
 			int create_cpp_class_metatable(lua_State* L)
@@ -78,7 +76,7 @@ namespace luabind {
 				return create_cpp_class_metatable(L);
 			}
 
-		} // namespace unnamed
+		//} // namespace unnamed
 
 		class class_rep;
 

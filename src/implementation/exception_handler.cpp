@@ -4,8 +4,6 @@
 
 module;
 
-#define LUABIND_BUILDING
-
 #ifndef LUABIND_NO_EXCEPTIONS
 
 #include "definitions.hpp"

@@ -29,8 +29,6 @@ module luabind;
 
 import :wrapper_base;
 
-#define LUABIND_BUILDING
-
 namespace luabind {
 	namespace detail {
 

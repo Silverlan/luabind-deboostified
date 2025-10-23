@@ -11,8 +11,6 @@ module luabind;
 
 import :function;
 
-#define LUABIND_BUILDING
-
 namespace luabind {
 	namespace detail {
 

@@ -73,15 +73,18 @@ module;
 #include <vector>
 #include <cassert>
 #include <memory>
+#include <functional>
 
 export module luabind:class_type;
 
+import :detail.constructor;
 export import :detail.enum_maker;
 export import :detail.inheritance;
 export import :detail.meta;
 export import :detail.property;
 export import :detail.type_traits;
 import :lua_argument_proxy;
+import :make_function;
 import :object;
 import :policies.dependency;
 import :policies.no_dependency;

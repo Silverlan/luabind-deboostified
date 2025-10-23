@@ -10,6 +10,7 @@ module;
 export module luabind:policies.iterator;
 
 export import :detail.policy;
+import :detail.push_to_lua;
 
 export namespace luabind {
 	namespace detail {

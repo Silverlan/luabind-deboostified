@@ -1,6 +1,3 @@
-
-export module luabind:pseudo.traits;
-
 // Copyright (c) 2005 Daniel Wallin
 
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -23,10 +20,11 @@ export module luabind:pseudo.traits;
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
 // OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef LUABIND_PSUDO_TRAITS_HPP
-# define LUABIND_PSUDO_TRAITS_HPP
+module;
 
-namespace luabind {
+export module luabind:pseudo.traits;
+
+export namespace luabind {
 	namespace detail {
 		template<typename T>
 		struct pseudo_traits {
@@ -35,6 +33,3 @@ namespace luabind {
 		};
 	} // namespace detail
 } // namespace luabind
-
-#endif
-

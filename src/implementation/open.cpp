@@ -31,8 +31,6 @@ import :detail.class_registry;
 import :detail.garbage_collector;
 import :detail.open;
 
-#define LUABIND_BUILDING
-
 namespace luabind {
 
 	namespace

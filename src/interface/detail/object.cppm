@@ -33,8 +33,8 @@ export module luabind:detail.object;
 import :detail.class_rep;
 export import :from_stack;
 export import :handle;
-export import :lua_index_proxy;
-export import :lua_iterator_proxy;
+//export import :lua_index_proxy;
+//export import :lua_iterator_proxy;
 export import :lua_proxy_interface;
 
 import :detail.policies.conversion_policies;
@@ -50,6 +50,8 @@ import :detail.policies.value_converter;
 
 export namespace luabind {
 	namespace adl {
+		template<class Next>
+		class index_proxy;
 
 		// An object holds a reference to a Lua value residing
 		// in the registry.
@@ -90,12 +92,7 @@ export namespace luabind {
 			bool is_valid() const;
 
 			template<class T>
-			index_proxy<object> operator[](T const& key) const
-			{
-				return index_proxy<object>(
-					*this, m_handle.interpreter(), key
-					);
-			}
+			index_proxy<object> operator[](T const& key) const;
 
 			void swap(object& other)
 			{
@@ -160,15 +157,6 @@ export namespace luabind {
 		return resume_pushed_function<R, PolicyList>(obj.interpreter(), std::forward<Args>(args)...);
 	}
 
-	// declared in luabind/lua_index_proxy.hpp
-	template<typename Next>
-	adl::index_proxy<Next>::operator object()
-	{
-		detail::stack_pop pop(m_interpreter, 1);
-		push(m_interpreter);
-		return object(from_stack(m_interpreter, -1));
-	}
-
 	// declared in luabind/lua_proxy_interface.hpp
 	template<typename ProxyType>
 	template<typename PolicyList, typename... Args>
@@ -183,23 +171,6 @@ export namespace luabind {
 	object adl::lua_proxy_interface<ProxyType>::operator()(Args&&... args)
 	{
 		return call<no_policies>(std::forward<Args>(args)...);
-	}
-
-	// declared in luabind/lua_iterator_proxy.hpp
-	template<class AccessPolicy>
-	adl::iterator_proxy<AccessPolicy>::operator object()
-	{
-		lua_pushvalue(m_interpreter, m_key_index);
-		AccessPolicy::get(m_interpreter, m_table_index);
-		detail::stack_pop pop(m_interpreter, 1);
-		return object(from_stack(m_interpreter, -1));
-	}
-
-	// declared in luabind/lua_iterator_proxy.hpp
-	template<class AccessPolicy>
-	object detail::basic_iterator<AccessPolicy>::key() const
-	{
-		return object(m_key);
 	}
 
 	namespace adl {
@@ -379,6 +350,14 @@ export namespace luabind {
 		lua_pushcclosure(interpreter, &detail::property_tag, 2);
 		detail::stack_pop pop(interpreter, 1);
 		return object(from_stack(interpreter, -1));
+	}
+
+	template<class T>
+	adl::index_proxy<adl::object> adl::object::operator[](T const& key) const
+	{
+		return index_proxy<object>(
+			*this, m_handle.interpreter(), key
+			);
 	}
 
 } // namespace luabind

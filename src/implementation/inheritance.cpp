@@ -15,8 +15,6 @@ module luabind;
 
 import :detail.inheritance;
 
-#define LUABIND_BUILDING
-
 namespace luabind {
 	namespace detail {
 

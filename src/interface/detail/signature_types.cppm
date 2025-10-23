@@ -2,19 +2,19 @@
 // subject to the Boost Software License, Version 1.0. (See accompanying
 // file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef LUABIND_SIGNATURE_TYPES_HPP
-# define LUABIND_SIGNATURE_TYPES_HPP
+module;
 
-
+#include "lua_include.hpp"
 #include <vector>
+#include <string>
 
 export module luabind:detail.signature_types;
 
+import :detail.class_registry;
+export import :detail.type_info;
+import :pointer_traits;
 
-
-
-
-namespace luabind {
+export namespace luabind {
 	namespace adl {
 
 		class object;
@@ -242,6 +242,3 @@ namespace luabind {
 	} // namespace detail
 
 } // namespace luabind
-
-#endif // LUABIND_FORMAT_SIGNATURE_081014_HPP
-

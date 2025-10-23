@@ -28,8 +28,6 @@ module luabind;
 
 import :detail.pcall;
 
-#define LUABIND_BUILDING
-
 namespace luabind {
 	namespace detail {
 

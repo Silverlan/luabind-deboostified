@@ -23,4 +23,3 @@
 module;
 
 export module luabind:detail.signature_match;
-

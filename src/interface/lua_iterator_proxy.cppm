@@ -13,6 +13,7 @@ export import :lua_index_proxy;
 export import :lua_proxy;
 export import :lua_proxy_interface;
 export import :nil;
+export import :object;
 
 #if LUA_VERSION_NUM < 502
 # define lua_compare(L, index1, index2, fn) fn(L, index1, index2)
@@ -221,6 +222,21 @@ export namespace luabind {
 		};
 
 	} // namespace detail
+
+	template<class AccessPolicy>
+	adl::iterator_proxy<AccessPolicy>::operator object()
+	{
+		lua_pushvalue(m_interpreter, m_key_index);
+		AccessPolicy::get(m_interpreter, m_table_index);
+		detail::stack_pop pop(m_interpreter, 1);
+		return object(from_stack(m_interpreter, -1));
+	}
+
+	template<class AccessPolicy>
+	object detail::basic_iterator<AccessPolicy>::key() const
+	{
+		return object(m_key);
+	}
 
 	using iterator = detail::basic_iterator<detail::basic_access>;
 	using raw_iterator = detail::basic_iterator<detail::raw_access>;

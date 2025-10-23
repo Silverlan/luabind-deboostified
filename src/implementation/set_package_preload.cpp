@@ -41,8 +41,6 @@ module luabind;
 
 import :set_package_preload;
 
-#define LUABIND_BUILDING
-
 // Internal Includes
 
 // Library/third-party includes

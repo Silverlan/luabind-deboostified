@@ -27,8 +27,6 @@ module;
 
 module luabind;
 
-#define LUABIND_BUILDING
-
 using namespace luabind::detail;
 
 std::string luabind::detail::stack_content_by_name(lua_State* L, int start_index)

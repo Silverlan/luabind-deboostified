@@ -55,6 +55,7 @@ set(LUABIND_MODULES
     interface/function_introspection.cppm
     interface/get_main_thread.cppm
     interface/pointer_traits.cppm
+    interface/pseudo_traits.cppm
     interface/handle.cppm
     interface/luabind.cppm         # typically the umbrella module interface
     interface/lua_argument_proxy.cppm
@@ -113,6 +114,7 @@ set(LUABIND_DETAIL_MODULES
     interface/detail/property.cppm
     interface/detail/ref.cppm
     interface/detail/signature_match.cppm
+    interface/detail/signature_types.cppm
     interface/detail/stack_utils.cppm
     interface/detail/type_info.cppm
     interface/detail/type_traits.cppm
@@ -165,6 +167,8 @@ target_sources(luabind
 )
 target_sources(luabind PRIVATE ${LUABIND_SRCS})
 target_include_directories(luabind PRIVATE "./")
+
+target_compile_definitions(luabind PRIVATE "-DLUABIND_BUILDING")
 
 # Ensure C++20 (and enable module support where the compiler supports it)
 # Using target property to be conservative and local to the target

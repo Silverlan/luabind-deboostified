@@ -11,6 +11,7 @@ export module luabind:make_function;
 
 export import :detail.call;
 import :detail.format_signature;
+import :detail.signature_types;
 
 export namespace luabind {
 
@@ -124,6 +125,12 @@ export namespace luabind {
 	object make_function(lua_State* L, F f)
 	{
 		return make_function(L, f, deduce_signature_t<F>(), no_policies());
+	}
+
+	template <class F, class Signature, class InjectorList>
+		void luabind::detail::function_object_impl<F,Signature,InjectorList>::get_signature_info(lua_State* L, char const* function, std::vector<TypeInfo> &outTypes) const
+	{
+		detail::get_type(L, function, Signature(), outTypes);
 	}
 
 } // namespace luabind

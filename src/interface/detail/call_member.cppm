@@ -30,6 +30,7 @@ export module luabind:detail.call_member;
 
 import :detail.call_shared;
 export import :detail.object;
+import :detail.pcall;
 export import :wrapper_base;
 
 export namespace luabind {

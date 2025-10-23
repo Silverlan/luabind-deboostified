@@ -26,8 +26,6 @@ module luabind;
 
 import :detail.link_compatibility;
 
-#define LUABIND_BUILDING
-
 namespace luabind {
 	namespace detail {
 

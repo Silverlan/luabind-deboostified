@@ -299,7 +299,6 @@ export namespace luabind {
 		detail::stack_pop pop(interpreter, 1);
 		return static_cast<T*>(lua_touserdata(interpreter, -1));
 	}
-
 }
 
 #if LUA_VERSION_NUM < 502

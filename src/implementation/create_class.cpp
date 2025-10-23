@@ -28,8 +28,6 @@ module;
 
 module luabind;
 
-#define LUABIND_BUILDING
-
 #if LUA_VERSION_NUM < 502
 # define lua_compare(L, index1, index2, fn) fn(L, index1, index2)
 # define LUA_OPEQ lua_equal

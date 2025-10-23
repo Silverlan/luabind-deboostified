@@ -28,8 +28,6 @@ module luabind;
 
 import :operators;
 
-#define LUABIND_BUILDING
-
 namespace luabind
 {
 	LUABIND_API self_type self;

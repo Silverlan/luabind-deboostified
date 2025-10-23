@@ -6,8 +6,11 @@ module;
 
 export module luabind:lua_index_proxy;
 
+import :from_stack;
 export import :lua_proxy_interface;
 export import :nil;
+
+import :detail.object;
 
 export namespace luabind {
 
@@ -133,7 +136,14 @@ export namespace luabind {
 		}
 	};
 
-
+	// declared in luabind/lua_index_proxy.hpp
+	template<typename Next>
+	adl::index_proxy<Next>::operator adl::object()
+	{
+		detail::stack_pop pop(m_interpreter, 1);
+		push(m_interpreter);
+		return adl::object(from_stack(m_interpreter, -1));
+	}
 }	// namespace luabind
 
 

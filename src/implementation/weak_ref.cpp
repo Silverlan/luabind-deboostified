@@ -30,8 +30,6 @@ module luabind;
 
 import :weak_ref;
 
-#define LUABIND_BUILDING
-
 namespace luabind {
 
 	namespace

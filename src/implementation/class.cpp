@@ -32,8 +32,6 @@ module luabind;
 import :class_type;
 import :detail.class_registry;
 
-#define LUABIND_BUILDING
-
 namespace luabind {
 	namespace detail {
 

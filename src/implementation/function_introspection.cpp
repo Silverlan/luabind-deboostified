@@ -50,8 +50,6 @@ module luabind;
 
 import :function_introspection;
 
-#define LUABIND_BUILDING
-
 namespace luabind {
 
 	namespace {

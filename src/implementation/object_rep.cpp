@@ -29,8 +29,6 @@ module luabind;
 import :detail.object_rep;
 import :detail.operator_id;
 
-#define LUABIND_BUILDING
-
 #if LUA_VERSION_NUM < 502
 # define lua_getuservalue lua_getfenv
 # define lua_setuservalue lua_setfenv

@@ -33,8 +33,6 @@ import :detail.class_registry;
 import :detail.class_rep;
 import :detail.operator_id;
 
-#define LUABIND_BUILDING
-
 #if LUA_VERSION_NUM < 502
 # define lua_rawlen lua_objlen
 #endif

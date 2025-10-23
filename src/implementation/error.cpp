@@ -28,8 +28,6 @@ module luabind;
 
 import :error;
 
-#define LUABIND_BUILDING
-
 namespace luabind {
 
 #ifndef LUABIND_NO_EXCEPTIONS	
