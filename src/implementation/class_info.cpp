@@ -24,6 +24,7 @@ module;
 
 #include "definitions.hpp"
 #include <cstring>
+#include <map>
 
 module luabind;
 

@@ -24,6 +24,7 @@ module;
 
 #include "definitions.hpp"
 #include <cassert>
+#include <memory>
 
 module luabind;
 

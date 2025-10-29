@@ -5,6 +5,7 @@
 module;
 
 #include "definitions.hpp"
+#include <memory>
 
 export module luabind:function;
 

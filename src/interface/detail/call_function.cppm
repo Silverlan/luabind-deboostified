@@ -29,6 +29,7 @@ module;
 export module luabind:detail.call_function;
 
 import :detail.call_shared;
+import :detail.decorate_type;
 import :detail.pcall;
 import :detail.policy;
 import :detail.push_to_lua;

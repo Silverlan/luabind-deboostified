@@ -8,11 +8,6 @@ project(luabind LANGUAGES CXX)
 # Original author: Ryan Pavlik <rpavlik@iastate.edu>
 # This file adapted to use C++20 modules & module interface units.
 
-# Require C++20
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-
 # Sources (implementation .cpp files stay as-is)
 set(LUABIND_SRCS
     implementation/class.cpp
@@ -159,6 +154,10 @@ set(LUABIND_MODULE_UNITS
 
 # Create library: implementation sources + module interface units
 add_library(luabind)
+
+target_compile_features(luabind PRIVATE cxx_std_20)
+set_target_properties(luabind PROPERTIES LINKER_LANGUAGE CXX)
+set_target_properties(luabind PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 target_sources(luabind
   PUBLIC

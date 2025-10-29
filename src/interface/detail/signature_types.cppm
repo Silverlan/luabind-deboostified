@@ -7,17 +7,18 @@ module;
 #include "lua_include.hpp"
 #include <vector>
 #include <string>
+#include <typeinfo>
+#include <cinttypes>
 
 export module luabind:detail.signature_types;
 
 import :detail.class_registry;
 export import :detail.type_info;
+export import :object;
 import :pointer_traits;
 
 export namespace luabind {
 	namespace adl {
-
-		class object;
 		class argument;
 		template <class Base>
 		struct table;

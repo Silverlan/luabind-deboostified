@@ -18,6 +18,7 @@ module;
 
 #include "lua_include.hpp"
 #include <type_traits>
+#include <tuple>
 
 export module luabind:detail.policies.pointer_converter;
 

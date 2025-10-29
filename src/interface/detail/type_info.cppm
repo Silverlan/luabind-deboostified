@@ -9,6 +9,7 @@ module;
 #include <typeinfo>
 #include <optional>
 #include <string>
+#include <vector>
 
 export module luabind:detail.type_info;
 

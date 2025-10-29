@@ -26,6 +26,9 @@ module;
 #include <cstring>
 #include <iostream>
 #include <cassert>
+#include <vector>
+#include <map>
+#include <memory>
 
 module luabind;
 

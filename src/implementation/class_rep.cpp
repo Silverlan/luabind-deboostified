@@ -26,6 +26,9 @@ module;
 #include <utility>
 #include <cassert>
 #include <tuple>
+#include <map>
+#include <typeinfo>
+#include <cstring>
 
 module luabind;
 

@@ -26,6 +26,7 @@ module;
 #include "definitions.hpp"
 #include <type_traits>	// std::aligned_storage
 #include <cstdlib>
+#include <tuple>
 
 export module luabind:detail.object_rep;
 

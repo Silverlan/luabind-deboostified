@@ -26,6 +26,7 @@ module;
 	// std::reference_wrapper...
 #include <type_traits>  // std::true_type...
 #include <cstring>
+#include <stddef.h>
 
 export module luabind:detail.primitives;
 

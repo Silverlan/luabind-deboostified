@@ -144,6 +144,18 @@ export namespace luabind {
 		push(m_interpreter);
 		return adl::object(from_stack(m_interpreter, -1));
 	}
+
+#ifdef __clang__
+    // To prevent a circular dependency, we define this function here, even though it belongs to
+    // the :object partition. TODO: Find a better way to resolve this
+    template<class T>
+	adl::index_proxy<adl::object> adl::object::operator[](T const& key) const
+	{
+		return index_proxy<object>(
+			*this, m_handle.interpreter(), key
+			);
+	}
+#endif
 }	// namespace luabind
 
 

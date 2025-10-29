@@ -37,6 +37,7 @@ export import :handle;
 //export import :lua_iterator_proxy;
 export import :lua_proxy_interface;
 
+import :detail.call_function;
 import :detail.policies.conversion_policies;
 import :detail.policies.lua_proxy_converter;
 import :detail.policies.native_converter;
@@ -352,6 +353,8 @@ export namespace luabind {
 		return object(from_stack(interpreter, -1));
 	}
 
+#ifndef __clang__
+    // For clang definition, see lua_index_proxy.cppm
 	template<class T>
 	adl::index_proxy<adl::object> adl::object::operator[](T const& key) const
 	{
@@ -359,6 +362,7 @@ export namespace luabind {
 			*this, m_handle.interpreter(), key
 			);
 	}
+#endif
 
 } // namespace luabind
 

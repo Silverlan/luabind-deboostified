@@ -5,6 +5,7 @@
 module;
 
 # include <typeinfo>
+#include <cstring>
 
 export module luabind:typeid_type;
 

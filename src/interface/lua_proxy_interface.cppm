@@ -6,6 +6,7 @@ module;
 
 export module luabind:lua_proxy_interface;
 
+import :detail.decorate_type;
 import :detail.push_to_lua;
 import :detail.stack_utils;
 export import :detail.type_traits;
