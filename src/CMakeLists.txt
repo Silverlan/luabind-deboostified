@@ -1,14 +1,9 @@
 cmake_minimum_required(VERSION 3.20)
 project(luabind LANGUAGES CXX)
 
-# Build for LuaBind (module-aware / C++20 version)
-# Updated to consume C++20 module interface units (.cppm) instead of plain headers
-# and to build with C++20 (module support).
-#
 # Original author: Ryan Pavlik <rpavlik@iastate.edu>
 # This file adapted to use C++20 modules & module interface units.
 
-# Sources (implementation .cpp files stay as-is)
 set(LUABIND_SRCS
     implementation/class.cpp
     implementation/class_info.cpp
@@ -33,9 +28,6 @@ set(LUABIND_SRCS
 )
 source_group("Sources" FILES ${LUABIND_SRCS})
 
-# Module interface units (converted from the old headers to .cppm)
-# These are module interface files under interface/...
-# Note: keep same relative layout as your repo (these paths are relative to this CMakeLists directory).
 set(LUABIND_MODULES
     interface/back_reference_fwd.cppm
     interface/back_reference.cppm
@@ -144,7 +136,6 @@ set(LUABIND_USER_POLICY_MODULES
 )
 source_group("User Policies MODULES" FILES ${LUABIND_USER_POLICY_MODULES})
 
-# Collect all module interface units
 set(LUABIND_MODULE_UNITS
     ${LUABIND_MODULES}
     ${LUABIND_DETAIL_MODULES}
@@ -152,10 +143,9 @@ set(LUABIND_MODULE_UNITS
     ${LUABIND_USER_POLICY_MODULES}
 )
 
-# Create library: implementation sources + module interface units
 add_library(luabind)
 
-target_compile_features(luabind PRIVATE cxx_std_20)
+target_compile_features(luabind PRIVATE cxx_std_23)
 set_target_properties(luabind PROPERTIES LINKER_LANGUAGE CXX)
 set_target_properties(luabind PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
@@ -169,16 +159,10 @@ target_include_directories(luabind PRIVATE "./")
 
 target_compile_definitions(luabind PRIVATE "-DLUABIND_BUILDING")
 
-# Ensure C++20 (and enable module support where the compiler supports it)
-# Using target property to be conservative and local to the target
-target_compile_features(luabind PUBLIC cxx_std_20)
-
-# MSVC specific flags: suppress warning 4251 if desired (keeps previous behavior)
 if(MSVC)
     target_compile_options(luabind PRIVATE /wd4251)
 endif()
 
-# Linker: Lua and possibly math library on GCC-like
 if(CMAKE_COMPILER_IS_GNUCXX)
     list(APPEND LUABIND_EXTRA_LIBS m)
 endif()
@@ -189,17 +173,12 @@ if(UNIX)
     target_link_libraries(luabind PRIVATE dl)
 endif()
 
-# Preserve previous property usage if necessary
-# (You may remove the next line if not needed — it mirrors original behavior)
 set_property(TARGET luabind PROPERTY COMPILE_FLAGS ${CMAKE_SHARED_LIBRARY_C_FLAGS})
 set_property(TARGET luabind PROPERTY PROJECT_LABEL "LuaBind Library")
 
-# Expose lists to parent scope to preserve original CMake API
 set(ALLHEADERS ${LUABIND_MODULE_UNITS} PARENT_SCOPE)
 set(APIHEADERS ${LUABIND_MODULES} PARENT_SCOPE)
 
-# Installation: install module interface units (instead of old .hpp files).
-# Destination decision: keep placing module units under include/luabind so consumers can import them
 if(LUABIND_INSTALL)
     if(NOT INCLUDE_DIR)
         set(INCLUDE_DIR include)
@@ -214,25 +193,21 @@ if(LUABIND_INSTALL)
         set(BIN_DIR bin)
     endif()
 
-    # Install top-level module interfaces to ${INCLUDE_DIR}/luabind
     install(FILES ${LUABIND_MODULES}
         DESTINATION ${INCLUDE_DIR}/luabind
         COMPONENT sdk
     )
 
-    # Install user policy module interfaces to ${INCLUDE_DIR}/luabind
     install(FILES ${LUABIND_USER_POLICY_MODULES}
         DESTINATION ${INCLUDE_DIR}/luabind
         COMPONENT sdk
     )
 
-    # Install detail module interfaces to ${INCLUDE_DIR}/luabind/detail
     install(FILES ${LUABIND_DETAIL_MODULES}
         DESTINATION ${INCLUDE_DIR}/luabind/detail
         COMPONENT sdk
     )
 
-    # Install default policy module interfaces to ${INCLUDE_DIR}/luabind/detail/conversion_policies
     install(FILES ${LUABIND_DEFAULT_POLICY_MODULES}
         DESTINATION ${INCLUDE_DIR}/luabind/detail/conversion_policies
         COMPONENT sdk
