@@ -44,7 +44,7 @@ import :detail.policies.native_converter;
 import :detail.policies.pointer_converter;
 import :detail.policies.reference_converter;
 import :detail.policies.value_converter;
-
+#if 0
 #if LUA_VERSION_NUM < 502
 # define lua_pushglobaltable(L) lua_pushvalue(L, LUA_GLOBALSINDEX)
 #endif
@@ -370,5 +370,4 @@ export namespace luabind {
 #undef lua_pushglobaltable
 #endif
 
-
-
+#endif
