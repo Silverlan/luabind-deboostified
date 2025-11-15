@@ -25,9 +25,10 @@ module;
 
 #include "lua_include.hpp"
 #include <cassert>
-#include <algorithm>
 
 export module luabind:detail.ref;
+
+import std;
 
 export namespace luabind {
 

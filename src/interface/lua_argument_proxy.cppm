@@ -1,7 +1,6 @@
 module;
 
 #include "lua_include.hpp"
-#include <type_traits>
 
 export module luabind:lua_argument_proxy;
 

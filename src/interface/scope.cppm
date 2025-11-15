@@ -23,10 +23,10 @@
 module;
 
 #include "definitions.hpp"
-#include <memory>
 
 export module luabind:scope;
 
+import std;
 
 export namespace luabind {
 

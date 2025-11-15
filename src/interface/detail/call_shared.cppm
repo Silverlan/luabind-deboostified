@@ -23,7 +23,6 @@
 module;
 
 #include "lua_include.hpp"
-#include <typeinfo>
 
 export module luabind:detail.call_shared;
 

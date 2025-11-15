@@ -5,7 +5,6 @@
 module;
 
 #include "definitions.hpp"
-#include <type_traits>
 
 export module luabind:exception_handler;
 

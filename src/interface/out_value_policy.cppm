@@ -24,9 +24,6 @@
 module;
 
 #include "lua_include.hpp"
-#include <new>                              // for operator new
-#include <type_traits>
-#include <memory>
 
 export module luabind:policies.out_value;
 

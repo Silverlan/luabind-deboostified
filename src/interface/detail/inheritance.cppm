@@ -5,11 +5,7 @@
 module;
 
 #include "definitions.hpp"
-# include <cassert>
-# include <limits>
-# include <map>
-# include <memory>
-# include <vector>
+#include <cassert>
 
 export module luabind:detail.inheritance;
 

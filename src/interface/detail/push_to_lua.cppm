@@ -24,7 +24,6 @@
 module;
 
 #include "lua_include.hpp"
-#include <functional>
 
 export module luabind:detail.push_to_lua;
 

@@ -1,7 +1,6 @@
 module;
 
 #include "lua_include.hpp"
-#include <ostream>
 #include <cassert>
 
 export module luabind:lua_proxy_interface;

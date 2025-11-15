@@ -5,7 +5,6 @@
 module;
 
 #include "lua_include.hpp"
-# include <stdexcept>
 
 export module luabind:detail.instance_holder;
 

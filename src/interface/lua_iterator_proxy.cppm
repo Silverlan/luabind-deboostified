@@ -2,8 +2,6 @@ module;
 
 #include "lua_include.hpp"
 #include <cassert>
-#include <utility>
-#include <iterator>
 
 export module luabind:lua_iterator_proxy;
 

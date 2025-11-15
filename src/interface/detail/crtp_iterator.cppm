@@ -1,8 +1,8 @@
 ﻿module;
 
-#include <iterator>
-
 export module luabind:detail.crtp_iterator;
+
+export import std;
 
 export namespace luabind {
 	namespace detail {

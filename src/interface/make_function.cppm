@@ -5,7 +5,6 @@
 module;
 
 #include "definitions.hpp"
-#include <vector>
 
 export module luabind:make_function;
 

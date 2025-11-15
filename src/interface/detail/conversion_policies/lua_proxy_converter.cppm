@@ -17,7 +17,6 @@
 module;
 
 #include "lua_include.hpp"
-#include <type_traits>
 
 export module luabind:detail.policies.lua_proxy_converter;
 

@@ -23,12 +23,12 @@
 module;
 
 #include "lua_include.hpp"
-#include <type_traits>
 
 export module luabind:detail.policies.enum_converter;
 
 export import :config;
 export import :detail.decorate_type;
+import std;
 
 export namespace luabind {
 	namespace detail {

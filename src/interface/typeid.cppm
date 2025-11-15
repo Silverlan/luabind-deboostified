@@ -4,9 +4,6 @@
 
 module;
 
-# include <typeinfo>
-#include <cstring>
-
 export module luabind:typeid_type;
 
 export import :detail.type_traits;

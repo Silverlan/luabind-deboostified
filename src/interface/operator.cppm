@@ -31,12 +31,6 @@ module;
 # endif
 #endif
 
-#ifdef LUABIND_NO_STRINGSTREAM
-#include <strstream>
-#else
-#include <sstream>
-#endif
-
 export module luabind:operators;
 
 export import :detail.other;

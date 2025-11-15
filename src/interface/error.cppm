@@ -23,8 +23,6 @@
 module;
 
 #include "definitions.hpp"
-#include <exception>
-#include <string>
 
 export module luabind:error;
 

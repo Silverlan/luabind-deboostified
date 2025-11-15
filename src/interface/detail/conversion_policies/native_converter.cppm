@@ -23,8 +23,6 @@
 module;
 
 #include "lua_include.hpp"
-#include <type_traits>
-#include <string>
 
 export module luabind:detail.policies.native_converter;
 

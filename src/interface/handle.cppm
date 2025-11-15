@@ -23,7 +23,6 @@
 module;
 
 #include "definitions.hpp"
-#include <utility>
 
 export module luabind:handle;
 

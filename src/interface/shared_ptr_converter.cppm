@@ -5,7 +5,6 @@
 module;
 
 #include "lua_include.hpp"
-#include <memory>
 
 export module luabind:shared_ptr_converter;
 

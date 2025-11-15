@@ -5,10 +5,6 @@
 module;
 
 #include "lua_include.hpp"
-#include <vector>
-#include <string>
-#include <typeinfo>
-#include <cinttypes>
 
 export module luabind:detail.signature_types;
 

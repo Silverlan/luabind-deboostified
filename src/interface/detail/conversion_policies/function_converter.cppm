@@ -5,7 +5,6 @@
 module;
 
 #include "lua_include.hpp"
-#include <functional>
 
 export module luabind:detail.policies.function_converter;
 

@@ -22,11 +22,9 @@
 
 module;
 
-#include <memory>
-#include <stdexcept>
-
 export module luabind:pointer_traits;
 
+export import std;
 
 // TODO: Rename to pointer_traits
 

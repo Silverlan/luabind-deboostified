@@ -68,12 +68,7 @@ module;
 */
 
 #include "definitions.hpp"
-#include <string>
-#include <map>
-#include <vector>
 #include <cassert>
-#include <memory>
-#include <functional>
 
 export module luabind:class_type;
 

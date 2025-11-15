@@ -23,10 +23,6 @@
 module;
 
 #include "lua_include.hpp"
-#include <tuple>
-#include <array>
-#include <string>
-#include <utility>
 
 export module luabind:detail.object;
 

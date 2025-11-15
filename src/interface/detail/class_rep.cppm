@@ -24,10 +24,6 @@
 module;
 
 #include "definitions.hpp"
-#include <string>
-#include <utility>
-#include <vector>
-#include <map>
 
 export module luabind:detail.class_rep;
 

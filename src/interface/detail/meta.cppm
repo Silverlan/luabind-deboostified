@@ -4,10 +4,9 @@
 
 module;
 
-
-#include <tuple>
-
 export module luabind:detail.meta;
+
+export import std;
 
 export namespace luabind {
 	namespace meta {

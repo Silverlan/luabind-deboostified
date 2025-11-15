@@ -22,9 +22,6 @@
 
 module;
 
-#include <type_traits>
-#include <functional>				// reference_wrapper
-
 export module luabind:detail.type_traits;
 
 export import :detail.meta;

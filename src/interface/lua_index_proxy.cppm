@@ -2,7 +2,6 @@ module;
 
 #include "lua_include.hpp"
 #include <cassert>
-#include <utility>
 
 export module luabind:lua_index_proxy;
 

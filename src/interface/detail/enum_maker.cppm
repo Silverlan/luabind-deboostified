@@ -23,11 +23,9 @@
 
 module;
 
-
-#include <vector>
-#include <string>
-
 export module luabind:detail.enum_maker;
+
+export import std;
 
 export namespace luabind {
 

@@ -5,13 +5,6 @@
 module;
 
 #include "definitions.hpp"
-#include <typeinfo>
-#include <vector>
-#include <string>
-
-#ifdef LUABIND_NO_INTERNAL_TAG_ARGUMENTS
-#include <tuple>
-#endif
 
 export module luabind:detail.call;
 

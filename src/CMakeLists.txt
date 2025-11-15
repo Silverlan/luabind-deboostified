@@ -44,7 +44,7 @@ set(LUABIND_MODULES
     interface/pointer_traits.cppm
     interface/pseudo_traits.cppm
     interface/handle.cppm
-    interface/luabind.cppm         # typically the umbrella module interface
+    interface/luabind.cppm
     interface/lua_argument_proxy.cppm
     interface/lua_index_proxy.cppm
     interface/lua_iterator_proxy.cppm

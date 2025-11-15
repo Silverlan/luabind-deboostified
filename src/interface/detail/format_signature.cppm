@@ -5,8 +5,6 @@
 module;
 
 #include "definitions.hpp"
-#include <string>
-#include <typeinfo>
 
 export module luabind:detail.format_signature;
 

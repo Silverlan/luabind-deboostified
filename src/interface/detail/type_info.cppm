@@ -5,11 +5,6 @@
 module;
 
 #include "definitions.hpp"
-#include <cinttypes>
-#include <typeinfo>
-#include <optional>
-#include <string>
-#include <vector>
 
 export module luabind:detail.type_info;
 

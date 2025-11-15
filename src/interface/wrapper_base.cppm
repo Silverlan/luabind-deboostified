@@ -23,8 +23,6 @@
 module;
 
 #include "definitions.hpp"
-#include <type_traits>
-#include <stdexcept>
 #include <cassert>
 
 export module luabind:wrapper_base;

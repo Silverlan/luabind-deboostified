@@ -17,9 +17,7 @@
 module;
 
 #include "lua_include.hpp"
-#include <type_traits>
 #include <cassert>
-#include <tuple>
 
 export module luabind:detail.policies.reference_converter;
 

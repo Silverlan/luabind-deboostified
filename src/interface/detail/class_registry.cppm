@@ -24,7 +24,6 @@
 module;
 
 #include "definitions.hpp"
-#include <map>
 
 export module luabind:detail.class_registry;
 

@@ -23,7 +23,6 @@
 module;
 
 #include "lua_include.hpp"
-#include <type_traits>
 #include <cassert>
 
 export module luabind:back_reference;

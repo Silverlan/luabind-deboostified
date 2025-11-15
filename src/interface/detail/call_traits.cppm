@@ -18,9 +18,9 @@ Added Borland specific fixes for reference types
 
 module;
 
-#include <type_traits>
-
 export module luabind:detail.call_traits;
+
+export import std;
 
 export namespace luabind {
 	namespace detail {

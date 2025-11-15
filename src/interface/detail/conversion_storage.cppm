@@ -4,9 +4,9 @@
 
 module;
 
-# include <type_traits>
-
 export module luabind:detail.conversion_storage;
+
+export import std;
 
 export namespace luabind {
 	namespace detail {

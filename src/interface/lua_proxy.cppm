@@ -22,9 +22,6 @@
 
 module;
 
-
-#include <type_traits>
-
 export module luabind:lua_proxy;
 
 export import :detail.type_traits;

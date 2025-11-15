@@ -17,8 +17,6 @@
 module;
 
 #include "lua_include.hpp"
-#include <type_traits>
-#include <memory>
 
 export module luabind:detail.policies.value_converter;
 

@@ -23,7 +23,6 @@
 module;
 
 #include "lua_include.hpp"
-#include <tuple>
 #include <cassert>
 
 export module luabind:detail.call_function;

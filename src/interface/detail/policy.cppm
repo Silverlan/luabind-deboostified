@@ -23,11 +23,6 @@
 
 module;
 
-#include <typeinfo>
-#include <type_traits>
-#include <string>
-#include <memory>
-
 export module luabind:detail.policy;
 
 export import :detail.meta;

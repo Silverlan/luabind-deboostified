@@ -5,8 +5,6 @@
 module;
 
 #include "lua_include.hpp"
-#include <utility>
-#include <stdexcept>
 
 export module luabind:detail.make_instance;
 

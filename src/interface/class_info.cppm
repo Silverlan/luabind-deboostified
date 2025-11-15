@@ -23,7 +23,6 @@
 module;
 
 #include "definitions.hpp"
-#include <string>
 
 export module luabind:class_info;
 
