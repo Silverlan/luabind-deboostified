@@ -14,6 +14,7 @@ import :lua_proxy;
 export import :typeid_type;
 
 // object.cppm
+import :detail.call_function;
 export import :from_stack;
 
 #if LUA_VERSION_NUM < 502
