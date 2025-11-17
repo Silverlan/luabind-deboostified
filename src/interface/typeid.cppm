@@ -7,6 +7,7 @@ module;
 export module luabind:typeid_type;
 
 export import :detail.type_traits;
+export import std.compat;
 
 export namespace luabind {
 

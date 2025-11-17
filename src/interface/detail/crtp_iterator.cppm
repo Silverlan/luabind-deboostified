@@ -2,7 +2,7 @@
 
 export module luabind:detail.crtp_iterator;
 
-export import std;
+export import std.compat;
 
 export namespace luabind {
 	namespace detail {
