@@ -1,186 +1,222 @@
-# Build for LuaBind
-# Ryan Pavlik <rpavlik@iastate.edu>
-# http://academic.cleardefinition.com/
-# Iowa State University HCI Graduate Program/VRAC
+cmake_minimum_required(VERSION 3.20)
+project(luabind LANGUAGES CXX)
+
+# Original author: Ryan Pavlik <rpavlik@iastate.edu>
+# This file adapted to use C++20 modules & module interface units.
 
 set(LUABIND_SRCS
-	class.cpp
-	class_info.cpp
-	class_registry.cpp
-	class_rep.cpp
-	create_class.cpp
-	error.cpp
-	exception_handler.cpp
-	function.cpp
-	function_introspection.cpp
-	inheritance.cpp
-	link_compatibility.cpp
-	object_rep.cpp
-	open.cpp
-	operator.cpp
-	pcall.cpp
-	scope.cpp
-	set_package_preload.cpp
-	stack_content_by_name.cpp
-	weak_ref.cpp
-	wrapper_base.cpp)
-
-set(LUABIND_API
-	../luabind/back_reference_fwd.hpp
-	../luabind/back_reference.hpp
-	../luabind/class.hpp
-	../luabind/class_info.hpp
-	../luabind/config.hpp
-	../luabind/error.hpp
-	../luabind/error_callback_fun.hpp
-	../luabind/exception_handler.hpp
-	../luabind/from_stack.hpp
-	../luabind/function.hpp
-	../luabind/function_introspection.hpp
-	../luabind/get_main_thread.hpp
-	../luabind/pointer_traits.hpp
-	../luabind/handle.hpp
-	../luabind/luabind.hpp
-	../luabind/lua_argument_proxy.hpp
-	../luabind/lua_include.hpp
-	../luabind/lua_index_proxy.hpp
-	../luabind/lua_iterator_proxy.hpp
-	../luabind/lua_proxy_interface.hpp
-	../luabind/lua_state_fwd.hpp
-	../luabind/make_function.hpp
-	../luabind/nil.hpp
-	../luabind/object.hpp
-	../luabind/open.hpp
-	../luabind/operator.hpp
-	../luabind/prefix.hpp
-	../luabind/scope.hpp
-	../luabind/set_package_preload.hpp
-	../luabind/shared_ptr_converter.hpp
-	../luabind/tag_function.hpp
-	../luabind/typeid.hpp
-	../luabind/lua_proxy.hpp
-	../luabind/version.hpp
-	../luabind/weak_ref.hpp
-	../luabind/wrapper_base.hpp
+    implementation/class.cpp
+    implementation/class_info.cpp
+    implementation/class_registry.cpp
+    implementation/class_rep.cpp
+    implementation/create_class.cpp
+    implementation/error.cpp
+    implementation/exception_handler.cpp
+    implementation/function.cpp
+    implementation/function_introspection.cpp
+    implementation/inheritance.cpp
+    implementation/link_compatibility.cpp
+    implementation/object_rep.cpp
+    implementation/open.cpp
+    implementation/operator.cpp
+    implementation/pcall.cpp
+    implementation/scope.cpp
+    implementation/set_package_preload.cpp
+    implementation/stack_content_by_name.cpp
+    implementation/weak_ref.cpp
+    implementation/wrapper_base.cpp
 )
-source_group(API FILES ${LUABIND_API})
+source_group("Sources" FILES ${LUABIND_SRCS})
 
-set(LUABIND_DETAIL_API
-	../luabind/detail/meta.hpp
-	../luabind/detail/call_traits.hpp
-	../luabind/detail/call_shared.hpp
-	../luabind/detail/crtp_iterator.hpp
-	../luabind/detail/call_function.hpp
-	../luabind/detail/call.hpp
-	../luabind/detail/call_member.hpp
-	../luabind/detail/class_registry.hpp
-	../luabind/detail/class_rep.hpp
-	../luabind/detail/constructor.hpp
-	../luabind/detail/conversion_storage.hpp
-	../luabind/detail/push_to_lua.hpp
-	../luabind/detail/debug.hpp
-	../luabind/detail/decorate_type.hpp
-	../luabind/detail/deduce_signature.hpp
-	../luabind/detail/enum_maker.hpp
-	../luabind/detail/format_signature.hpp
-	../luabind/detail/garbage_collector.hpp
-	../luabind/detail/inheritance.hpp
-	../luabind/detail/instance_holder.hpp
-	../luabind/detail/link_compatibility.hpp
-	../luabind/detail/make_instance.hpp
-	../luabind/detail/object.hpp
-	../luabind/detail/object_rep.hpp
-	../luabind/detail/open.hpp
-	../luabind/detail/operator_id.hpp
-	../luabind/detail/other.hpp
-	../luabind/detail/pcall.hpp
-	../luabind/detail/policy.hpp
-	../luabind/detail/primitives.hpp
-	../luabind/detail/property.hpp
-	../luabind/detail/ref.hpp
-	../luabind/detail/signature_match.hpp
-	../luabind/detail/stack_utils.hpp
-	../luabind/detail/type_traits.hpp
+set(LUABIND_MODULES
+    interface/back_reference_fwd.cppm
+    interface/back_reference.cppm
+    interface/class.cppm
+    interface/class_info.cppm
+    interface/config.cppm
+    interface/error.cppm
+    interface/error_callback_fun.cppm
+    interface/exception_handler.cppm
+    interface/from_stack.cppm
+    interface/function.cppm
+    interface/function_introspection.cppm
+    interface/get_main_thread.cppm
+    interface/pointer_traits.cppm
+    interface/pseudo_traits.cppm
+    interface/handle.cppm
+    interface/luabind.cppm
+    interface/lua_argument_proxy.cppm
+    interface/lua_index_proxy.cppm
+    interface/lua_iterator_proxy.cppm
+    interface/lua_proxy_interface.cppm
+    interface/lua_state_fwd.cppm
+    interface/make_function.cppm
+    interface/nil.cppm
+    interface/object.cppm
+    interface/open.cppm
+    interface/operator.cppm
+    interface/prefix.cppm
+    interface/scope.cppm
+    interface/set_package_preload.cppm
+    interface/shared_ptr_converter.cppm
+    interface/tag_function.cppm
+    interface/typeid.cppm
+    interface/lua_proxy.cppm
+    interface/weak_ref.cppm
+    interface/wrapper_base.cppm
 )
-source_group(Internal FILES ${LUABIND_DETAIL_API})
+source_group("API MODULES" FILES ${LUABIND_MODULES})
 
-set(LUABIND_DEFAULT_POLICIES
-	../luabind/detail/conversion_policies/pointer_converter.hpp
-	../luabind/detail/conversion_policies/reference_converter.hpp
-	../luabind/detail/conversion_policies/value_converter.hpp
-	../luabind/detail/conversion_policies/enum_converter.hpp
-	../luabind/detail/conversion_policies/function_converter.hpp
-	../luabind/detail/conversion_policies/conversion_base.hpp
-	../luabind/detail/conversion_policies/conversion_policies.hpp
-	../luabind/detail/conversion_policies/lua_proxy_converter.hpp
-	../luabind/detail/conversion_policies/native_converter.hpp
-	)
-source_group("Default Policies" FILES ${LUABIND_DEFAULT_POLICIES} )
-
-set(LUABIND_USER_POLICIES
-	../luabind/yield_policy.hpp
-	../luabind/no_dependency.hpp
-	../luabind/iterator_policy.hpp
-	../luabind/container_policy.hpp
-	../luabind/copy_policy.hpp
-	../luabind/dependency_policy.hpp
-	../luabind/discard_result_policy.hpp
-	../luabind/adopt_policy.hpp
-	../luabind/out_value_policy.hpp
-	../luabind/return_reference_to_policy.hpp
-	../luabind/raw_policy.hpp
+set(LUABIND_DETAIL_MODULES
+    interface/detail/meta.cppm
+    interface/detail/call_traits.cppm
+    interface/detail/call_shared.cppm
+    interface/detail/crtp_iterator.cppm
+    interface/detail/call_function.cppm
+    interface/detail/call.cppm
+    interface/detail/call_member.cppm
+    interface/detail/class_registry.cppm
+    interface/detail/class_rep.cppm
+    interface/detail/constructor.cppm
+    interface/detail/conversion_storage.cppm
+    interface/detail/push_to_lua.cppm
+    interface/detail/debug.cppm
+    interface/detail/decorate_type.cppm
+    interface/detail/deduce_signature.cppm
+    interface/detail/enum_maker.cppm
+    interface/detail/format_signature.cppm
+    interface/detail/garbage_collector.cppm
+    interface/detail/inheritance.cppm
+    interface/detail/instance_holder.cppm
+    interface/detail/link_compatibility.cppm
+    interface/detail/make_instance.cppm
+    interface/detail/object.cppm
+    interface/detail/object_rep.cppm
+    interface/detail/open.cppm
+    interface/detail/operator_id.cppm
+    interface/detail/other.cppm
+    interface/detail/pcall.cppm
+    interface/detail/policy.cppm
+    interface/detail/primitives.cppm
+    interface/detail/property.cppm
+    interface/detail/ref.cppm
+    interface/detail/signature_match.cppm
+    interface/detail/signature_types.cppm
+    interface/detail/stack_utils.cppm
+    interface/detail/type_info.cppm
+    interface/detail/type_traits.cppm
 )
-source_group("User Policies" FILES ${LUABIND_USER_POLICIES} )
+source_group("Detail MODULES" FILES ${LUABIND_DETAIL_MODULES})
 
-set(LUABIND_EXTRA_LIBS)
+set(LUABIND_DEFAULT_POLICY_MODULES
+    interface/detail/conversion_policies/pointer_converter.cppm
+    interface/detail/conversion_policies/reference_converter.cppm
+    interface/detail/conversion_policies/value_converter.cppm
+    interface/detail/conversion_policies/enum_converter.cppm
+    interface/detail/conversion_policies/function_converter.cppm
+    interface/detail/conversion_policies/conversion_base.cppm
+    interface/detail/conversion_policies/conversion_policies.cppm
+    interface/detail/conversion_policies/lua_proxy_converter.cppm
+    interface/detail/conversion_policies/native_converter.cppm
+)
+source_group("Default Policies MODULES" FILES ${LUABIND_DEFAULT_POLICY_MODULES})
+
+set(LUABIND_USER_POLICY_MODULES
+    interface/yield_policy.cppm
+    interface/no_dependency.cppm
+    interface/iterator_policy.cppm
+    interface/container_policy.cppm
+    interface/copy_policy.cppm
+    interface/dependency_policy.cppm
+    interface/discard_result_policy.cppm
+    interface/adopt_policy.cppm
+    interface/out_value_policy.cppm
+    interface/return_reference_to_policy.cppm
+    interface/raw_policy.cppm
+)
+source_group("User Policies MODULES" FILES ${LUABIND_USER_POLICY_MODULES})
+
+set(LUABIND_MODULE_UNITS
+    ${LUABIND_MODULES}
+    ${LUABIND_DETAIL_MODULES}
+    ${LUABIND_DEFAULT_POLICY_MODULES}
+    ${LUABIND_USER_POLICY_MODULES}
+)
+
+add_library(luabind)
+
+target_compile_features(luabind PRIVATE cxx_std_23)
+set_target_properties(luabind PROPERTIES LINKER_LANGUAGE CXX)
+set_target_properties(luabind PROPERTIES POSITION_INDEPENDENT_CODE ON)
+
+target_sources(luabind
+  PUBLIC
+    FILE_SET cxx_modules TYPE CXX_MODULES FILES
+    ${LUABIND_MODULE_UNITS}
+)
+target_sources(luabind PRIVATE ${LUABIND_SRCS})
+target_include_directories(luabind PRIVATE "./")
+
+target_compile_definitions(luabind PRIVATE "-DLUABIND_BUILDING")
+
 if(MSVC)
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4251")
-elseif(CMAKE_COMPILER_IS_GNUCXX)
-	list(APPEND LUABIND_EXTRA_LIBS m)
+    target_compile_options(luabind PRIVATE /wd4251)
 endif()
 
-add_library(luabind ${LUABIND_SRCS} ${LUABIND_API} ${LUABIND_DETAIL_API} ${LUABIND_DEFAULT_POLICIES} ${LUABIND_USER_POLICIES})
-target_link_libraries(luabind ${LUA_LIBRARIES} ${LUABIND_EXTRA_LIBS})
+if(CMAKE_COMPILER_IS_GNUCXX)
+    list(APPEND LUABIND_EXTRA_LIBS m)
+endif()
+
+target_link_libraries(luabind PRIVATE ${LUA_LIBRARIES} ${LUABIND_EXTRA_LIBS})
 
 if(UNIX)
-	target_link_libraries(luabind dl)
+    target_link_libraries(luabind PRIVATE dl)
 endif()
 
 set_property(TARGET luabind PROPERTY COMPILE_FLAGS ${CMAKE_SHARED_LIBRARY_C_FLAGS})
 set_property(TARGET luabind PROPERTY PROJECT_LABEL "LuaBind Library")
 
-set(ALLHEADERS ${LUABIND_API} ${LUABIND_DETAIL_API} PARENT_SCOPE)
-set(APIHEADERS ${LUABIND_API} PARENT_SCOPE)
+set(ALLHEADERS ${LUABIND_MODULE_UNITS} PARENT_SCOPE)
+set(APIHEADERS ${LUABIND_MODULES} PARENT_SCOPE)
 
 if(LUABIND_INSTALL)
-	if(NOT INCLUDE_DIR)
-		set(INCLUDE_DIR include)
-	endif()
-	if(NOT LIB_DIR)
-		set(LIB_DIR lib)
-	endif()
-	if(NOT ARCH_DIR)
-		set(ARCH_DIR lib)
-	endif()
-	if(NOT BIN_DIR)
-		set(BIN_DIR bin)
-	endif()
-	install(FILES ${LUABIND_API}
-		DESTINATION ${INCLUDE_DIR}/luabind
-		COMPONENT sdk)
-	install(FILES ${LUABIND_USER_POLICIES}
-		DESTINATION ${INCLUDE_DIR}/luabind
-		COMPONENT sdk)	
-	install(FILES ${LUABIND_DETAIL_API}
-		DESTINATION ${INCLUDE_DIR}/luabind/detail
-		COMPONENT sdk)
-	install(FILES ${LUABIND_DEFAULT_POLICIES}
-		DESTINATION ${INCLUDE_DIR}/luabind/detail/conversion_policies
-		COMPONENT sdk)
-	install(TARGETS luabind
-		EXPORT luabind
-		RUNTIME DESTINATION ${BIN_DIR} COMPONENT runtime
-		LIBRARY DESTINATION ${LIB_DIR} COMPONENT runtime
-		ARCHIVE DESTINATION ${ARCH_DIR} COMPONENT sdk)
-endif()
+    if(NOT INCLUDE_DIR)
+        set(INCLUDE_DIR include)
+    endif()
+    if(NOT LIB_DIR)
+        set(LIB_DIR lib)
+    endif()
+    if(NOT ARCH_DIR)
+        set(ARCH_DIR lib)
+    endif()
+    if(NOT BIN_DIR)
+        set(BIN_DIR bin)
+    endif()
 
+    install(FILES ${LUABIND_MODULES}
+        DESTINATION ${INCLUDE_DIR}/luabind
+        COMPONENT sdk
+    )
+
+    install(FILES ${LUABIND_USER_POLICY_MODULES}
+        DESTINATION ${INCLUDE_DIR}/luabind
+        COMPONENT sdk
+    )
+
+    install(FILES ${LUABIND_DETAIL_MODULES}
+        DESTINATION ${INCLUDE_DIR}/luabind/detail
+        COMPONENT sdk
+    )
+
+    install(FILES ${LUABIND_DEFAULT_POLICY_MODULES}
+        DESTINATION ${INCLUDE_DIR}/luabind/detail/conversion_policies
+        COMPONENT sdk
+    )
+
+    #install(TARGETS luabind
+    #    EXPORT luabind
+    #    RUNTIME DESTINATION ${BIN_DIR} COMPONENT runtime
+    #    LIBRARY DESTINATION ${LIB_DIR} COMPONENT runtime
+    #    ARCHIVE DESTINATION ${ARCH_DIR} COMPONENT sdk
+    #)
+endif()
