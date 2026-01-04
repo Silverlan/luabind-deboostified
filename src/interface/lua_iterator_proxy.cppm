@@ -1,5 +1,6 @@
 module;
 
+#include "definitions.hpp"
 #include "lua_include.hpp"
 #include <cassert>
 
@@ -117,7 +118,7 @@ export namespace luabind {
 
 	namespace detail
 	{
-		struct basic_access
+		struct LUABIND_API basic_access
 		{
 			static void set(lua_State* interpreter, int table)
 			{
@@ -130,7 +131,7 @@ export namespace luabind {
 			}
 		};
 
-		struct raw_access
+		struct LUABIND_API raw_access
 		{
 			static void set(lua_State* interpreter, int table)
 			{

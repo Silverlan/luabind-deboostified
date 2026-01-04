@@ -4,6 +4,7 @@
 
 module;
 
+#include "definitions.hpp"
 #include "lua_include.hpp"
 
 export module luabind:detail.signature_types;

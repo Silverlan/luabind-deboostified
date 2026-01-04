@@ -22,6 +22,7 @@
 
 module;
 
+#include "definitions.hpp"
 #include "lua_include.hpp"
 
 export module luabind:policies.yield;
@@ -33,7 +34,7 @@ export namespace luabind {
 
 	namespace detail {
 
-		struct yield_policy
+		struct LUABIND_API yield_policy
 		{
 			static void postcall(lua_State*, int /*results*/, meta::index_list_tag) {}
 		};

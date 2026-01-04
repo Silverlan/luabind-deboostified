@@ -16,6 +16,7 @@
 
 module;
 
+#include "definitions.hpp"
 #include "lua_include.hpp"
 
 export module luabind:detail.policies.pointer_converter;
@@ -34,7 +35,7 @@ export namespace luabind {
 
 	namespace detail {
 
-		struct pointer_converter
+		struct LUABIND_API pointer_converter
 		{
 			using type      = pointer_converter;
 			using is_native = std::false_type;
@@ -90,7 +91,7 @@ export namespace luabind {
 			{}
 		};
 
-		struct const_pointer_converter
+		struct LUABIND_API const_pointer_converter
 		{
 			using type      = const_pointer_converter;
 			using is_native = std::false_type;

@@ -51,12 +51,12 @@ export namespace luabind {
 		R call_member_impl(lua_State* L, std::false_type /*void*/, meta::index_list<Indices...>, Args&&... args);
 	}
 
-	struct wrapped_self_t : weak_ref
+	struct LUABIND_API wrapped_self_t : weak_ref
 	{
 		detail::lua_reference m_strong_ref;
 	};
 
-	struct wrap_base
+	struct LUABIND_API wrap_base
 	{
 		friend struct detail::wrap_access;
 		wrap_base() {}
@@ -98,7 +98,7 @@ export namespace luabind {
 
 	namespace detail
 	{
-		struct wrap_access
+		struct LUABIND_API wrap_access
 		{
 			static wrapped_self_t const& ref(wrap_base const& b)
 			{

@@ -4,6 +4,7 @@
 
 module;
 
+#include "definitions.hpp"
 #include "lua_include.hpp"
 
 export module luabind:shared_ptr_converter;
@@ -17,7 +18,7 @@ export namespace luabind {
 	namespace detail
 	{
 
-		struct shared_ptr_deleter
+		struct LUABIND_API shared_ptr_deleter
 		{
 			shared_ptr_deleter(lua_State* L, int index)
 				: life_support(get_main_thread(L), L, index)

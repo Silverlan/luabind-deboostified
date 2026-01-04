@@ -22,6 +22,7 @@
 
 module;
 
+#include "definitions.hpp"
 #include "lua_include.hpp"
 
 export module luabind:detail.policies.conversion_policies;

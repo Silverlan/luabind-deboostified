@@ -22,6 +22,7 @@
 
 module;
 
+#include "definitions.hpp"
 #include "lua_include.hpp"
 
 export module luabind:detail.policies.enum_converter;
@@ -39,7 +40,7 @@ export namespace luabind {
 			bool,
 			std::is_enum<T>::value && !std::is_convertible<T, int>::value>;
 
-		struct enum_converter
+		struct LUABIND_API enum_converter
 		{
 			using type = enum_converter;
 			using is_native = std::false_type;

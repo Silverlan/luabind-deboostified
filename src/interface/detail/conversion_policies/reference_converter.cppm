@@ -16,6 +16,7 @@
 
 module;
 
+#include "definitions.hpp"
 #include "lua_include.hpp"
 #include <cassert>
 
@@ -31,7 +32,7 @@ export namespace luabind {
 	*/
 	namespace detail {
 
-		struct ref_converter : pointer_converter
+		struct LUABIND_API ref_converter : pointer_converter
 		{
 			using type      = ref_converter;
 			using is_native = std::false_type;
@@ -74,7 +75,7 @@ export namespace luabind {
 			void converter_postcall(lua_State*, T, int) {}
 		};
 
-		struct const_ref_converter
+		struct LUABIND_API const_ref_converter
 		{
 			using type      = const_ref_converter;
 			using is_native = std::false_type;

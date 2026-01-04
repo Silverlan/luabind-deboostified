@@ -16,6 +16,7 @@
 
 module;
 
+#include "definitions.hpp"
 #include "lua_include.hpp"
 
 export module luabind:detail.policies.value_converter;
@@ -29,7 +30,7 @@ import :detail.object_rep;
 export namespace luabind {
 	namespace detail {
 
-		struct value_converter
+		struct LUABIND_API value_converter
 		{
 			using type      = value_converter;
 			using is_native = std::false_type;

@@ -28,7 +28,7 @@ export module luabind:from_stack;
 
 export namespace luabind {
 
-	struct from_stack
+	struct LUABIND_API from_stack
 	{
 		from_stack(lua_State* interpreter, int index)
 			: interpreter(interpreter)

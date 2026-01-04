@@ -23,6 +23,8 @@
 
 module;
 
+#include "definitions.hpp"
+
 export module luabind:detail.policy;
 
 export import :detail.meta;
@@ -64,7 +66,7 @@ export namespace luabind {
 		struct lua_to_cpp {};
 		struct cpp_to_lua {};
 
-		struct default_policy
+		struct LUABIND_API default_policy
 		{
 			template<class T, class Direction>
 			struct specialize

@@ -1,5 +1,6 @@
 module;
 
+#include "definitions.hpp"
 #include "lua_include.hpp"
 
 export module luabind:lua_argument_proxy;
@@ -13,7 +14,7 @@ export namespace luabind {
 
 	namespace adl {
 
-		class argument : public lua_proxy_interface<argument>
+		class LUABIND_API argument : public lua_proxy_interface<argument>
 		{
 		public:
 			argument(from_stack const& stack_reference)

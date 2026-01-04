@@ -22,6 +22,8 @@
 
 module;
 
+#include "definitions.hpp"
+
 export module luabind:pointer_traits;
 
 export import std;
@@ -96,12 +98,12 @@ export namespace luabind {
 		namespace has_get_pointer_
 		{
 
-			struct any
+			struct LUABIND_API any
 			{
 				template<class T> any(T const&);
 			};
 
-			struct no_overload_tag
+			struct LUABIND_API no_overload_tag
 			{};
 
 			typedef char(&yes)[1];

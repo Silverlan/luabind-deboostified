@@ -23,6 +23,7 @@
 
 module;
 
+#include "definitions.hpp"
 #include "lua_include.hpp"
 #include <cassert>
 
@@ -35,7 +36,7 @@ export namespace luabind {
 	namespace detail
 	{
 
-		struct lua_reference
+		struct LUABIND_API lua_reference
 		{
 			lua_reference(lua_State* L_ = 0)
 				: L(L_)

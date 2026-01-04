@@ -101,7 +101,7 @@ export namespace luabind {
 			result.first->second = id;
 		}
 
-		class class_map
+		class LUABIND_API class_map
 		{
 		public:
 			class_rep* get(class_id id) const;

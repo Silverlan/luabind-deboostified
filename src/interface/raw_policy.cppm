@@ -22,6 +22,7 @@
 
 module;
 
+#include "definitions.hpp"
 #include "lua_include.hpp"
 
 export module luabind:policies.raw;
@@ -33,7 +34,7 @@ export import :detail.policy;
 export namespace luabind {
 	namespace detail {
 
-		struct raw_converter
+		struct LUABIND_API raw_converter
 		{
 			enum { consumed_args = 0 };
 
@@ -50,7 +51,7 @@ export namespace luabind {
 			void converter_postcall(lua_State*, by_pointer<lua_State>, int) {}
 		};
 
-		struct raw_policy
+		struct LUABIND_API raw_policy
 		{
 			template<class T, class Direction>
 			struct specialize

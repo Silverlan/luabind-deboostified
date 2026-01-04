@@ -4,6 +4,7 @@
 
 module;
 
+#include "definitions.hpp"
 #include "lua_include.hpp"
 
 export module luabind:policies.no_dependency;
@@ -16,7 +17,7 @@ export namespace luabind {
 	namespace detail
 	{
 
-		struct no_dependency_policy
+		struct LUABIND_API no_dependency_policy
 		{
 			static void postcall(lua_State*, int /*results*/, meta::index_list_tag)
 			{}

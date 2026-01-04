@@ -1,5 +1,6 @@
 module;
 
+#include "definitions.hpp"
 #include "lua_include.hpp"
 #include <cassert>
 
@@ -326,7 +327,7 @@ export namespace luabind {
 
 		// An object holds a reference to a Lua value residing
 		// in the registry.
-		class object :
+		class LUABIND_API object :
 			public lua_proxy_interface<object>
 		{
 		public:

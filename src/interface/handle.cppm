@@ -32,7 +32,7 @@ export namespace luabind {
 
 	// A reference to a Lua value. Represents an entry in the
 	// registry table.
-	class handle
+	class LUABIND_API handle
 	{
 	public:
 		handle();

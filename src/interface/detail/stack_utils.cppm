@@ -22,6 +22,7 @@
 
 module;
 
+#include "definitions.hpp"
 #include "lua_include.hpp"
 #include <cassert>
 
@@ -30,7 +31,7 @@ export module luabind:detail.stack_utils;
 export namespace luabind {
 	namespace detail {
 
-		struct stack_pop
+		struct LUABIND_API stack_pop
 		{
 			stack_pop(lua_State* L, int n)
 				: m_state(L)

@@ -4,6 +4,7 @@
 
 module;
 
+#include "definitions.hpp"
 #include "lua_include.hpp"
 
 export module luabind:policies.copy;
@@ -14,7 +15,7 @@ import :detail.policy;
 export namespace luabind {
 	namespace detail {
 
-		struct copy_converter
+		struct LUABIND_API copy_converter
 		{
 			template <class T>
 			void to_lua(lua_State* L, T const& x)
@@ -32,7 +33,7 @@ export namespace luabind {
 			}
 		};
 
-		struct copy_policy
+		struct LUABIND_API copy_policy
 		{
 			template <class T, class Direction>
 			struct specialize

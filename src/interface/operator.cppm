@@ -110,11 +110,11 @@ export namespace luabind {
 		}
 	};
 
-	struct self_type : self_base<self_type>
+	struct LUABIND_API self_type : self_base<self_type>
 	{
 	};
 
-	struct const_self_type : self_base<const_self_type>
+	struct LUABIND_API const_self_type : self_base<const_self_type>
 	{
 	};
 
@@ -186,7 +186,7 @@ export namespace luabind {
 #define LUABIND_BINARY_OPERATOR(name_, op) \
     namespace operators { \
 \
-        struct name_ \
+        struct LUABIND_API name_ \
         { \
             template<class T0, class T1, class Policies> \
             struct apply \

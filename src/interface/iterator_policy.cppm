@@ -4,6 +4,7 @@
 
 module;
 
+#include "definitions.hpp"
 #include "lua_include.hpp"
 
 export module luabind:policies.iterator;
@@ -72,7 +73,7 @@ export namespace luabind {
 			return make_range(L, container.begin(), container.end());
 		}
 
-		struct iterator_converter
+		struct LUABIND_API iterator_converter
 		{
 			using type = iterator_converter;
 
@@ -89,7 +90,7 @@ export namespace luabind {
 			}
 		};
 
-		struct iterator_policy
+		struct LUABIND_API iterator_policy
 		{
 			template <class T, class Direction>
 			struct specialize

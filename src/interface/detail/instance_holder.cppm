@@ -4,6 +4,7 @@
 
 module;
 
+#include "definitions.hpp"
 #include "lua_include.hpp"
 
 export module luabind:detail.instance_holder;
@@ -14,7 +15,7 @@ export import :pointer_traits;
 export namespace luabind {
 	namespace detail {
 
-		class instance_holder
+		class LUABIND_API instance_holder
 		{
 		public:
 			instance_holder(bool pointee_const)

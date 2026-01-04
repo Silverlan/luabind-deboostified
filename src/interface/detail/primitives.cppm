@@ -23,6 +23,8 @@
 
 module;
 
+#include "definitions.hpp"
+
 export module luabind:detail.primitives;
 
 import std.compat;
@@ -33,7 +35,7 @@ export namespace luabind {
 		template<class T>
 		struct type_ {};
 
-		struct ltstr
+		struct LUABIND_API ltstr
 		{
 			bool operator()(const char* s1, const char* s2) const { return std::strcmp(s1, s2) < 0; }
 		};

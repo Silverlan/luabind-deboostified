@@ -173,6 +173,10 @@ if(UNIX)
     target_link_libraries(luabind PRIVATE dl)
 endif()
 
+if(WIN32 AND BUILD_SHARED_LIBS)
+    set_target_properties(luabind PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS ON)
+endif()
+
 set_property(TARGET luabind PROPERTY COMPILE_FLAGS ${CMAKE_SHARED_LIBRARY_C_FLAGS})
 set_property(TARGET luabind PROPERTY PROJECT_LABEL "LuaBind Library")
 

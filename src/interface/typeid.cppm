@@ -4,6 +4,8 @@
 
 module;
 
+#include "definitions.hpp"
+
 export module luabind:typeid_type;
 
 export import :detail.type_traits;
@@ -11,7 +13,7 @@ export import std.compat;
 
 export namespace luabind {
 
-	class type_id
+	class LUABIND_API type_id
 	{
 	public:
 		type_id()

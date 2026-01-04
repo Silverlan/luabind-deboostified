@@ -22,6 +22,7 @@
 
 module;
 
+#include "definitions.hpp"
 #include "lua_include.hpp"
 
 export module luabind:policies.discard_result;
@@ -31,13 +32,13 @@ export import :detail.policy;
 export namespace luabind {
 	namespace detail {
 
-		struct discard_converter
+		struct LUABIND_API discard_converter
 		{
 			template<class T>
 			void to_lua(lua_State*, T) {}
 		};
 
-		struct discard_result_policy
+		struct LUABIND_API discard_result_policy
 		{
 			struct can_only_convert_from_cpp_to_lua {};
 
