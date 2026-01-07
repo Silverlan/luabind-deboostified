@@ -42,7 +42,10 @@ export namespace luabind {
 		struct conversion_storage;
 
 		// This function is used as a tag to identify "properties".
-		LUABIND_API int property_tag(lua_State*);
+		using PropertyTag = int(*)(lua_State*);
+		LUABIND_API void set_property_tag(PropertyTag tag);
+		LUABIND_API PropertyTag get_property_tag();
+		// LUABIND_API int property_tag(lua_State*);
 
 		// this is class-specific information, poor man's vtable
 		// this is allocated statically (removed by the compiler)

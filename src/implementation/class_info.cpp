@@ -99,7 +99,7 @@ namespace luabind {
 			member.push(L);
 			detail::stack_pop pop(L, 1);
 
-			if(lua_tocfunction(L, -1) == &detail::property_tag)
+			if(lua_tocfunction(L, -1) == detail::get_property_tag())
 			{
 				result.attributes[index++] = i.key();
 			} else

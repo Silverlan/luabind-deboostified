@@ -49,7 +49,7 @@ namespace luabind {
 			if(args == 1)
 				lua_pushnil(L);
 
-			lua_pushcclosure(L, &detail::property_tag, 2);
+			lua_pushcclosure(L, detail::get_property_tag(), 2);
 			return 1;
 		}
 

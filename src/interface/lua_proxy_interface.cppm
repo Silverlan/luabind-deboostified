@@ -592,7 +592,7 @@ export namespace luabind {
 		lua_State* interpreter = lua_proxy_traits<GetValueWrapper>::interpreter(get);
 		lua_proxy_traits<GetValueWrapper>::unwrap(interpreter, get);
 		lua_pushnil(interpreter);
-		lua_pushcclosure(interpreter, &detail::property_tag, 2);
+		lua_pushcclosure(interpreter, detail::get_property_tag(), 2);
 		detail::stack_pop pop(interpreter, 1);
 		return object(from_stack(interpreter, -1));
 	}
@@ -603,7 +603,7 @@ export namespace luabind {
 		lua_State* interpreter = lua_proxy_traits<GetValueWrapper>::interpreter(get);
 		lua_proxy_traits<GetValueWrapper>::unwrap(interpreter, get);
 		lua_proxy_traits<SetValueWrapper>::unwrap(interpreter, set);
-		lua_pushcclosure(interpreter, &detail::property_tag, 2);
+		lua_pushcclosure(interpreter, detail::get_property_tag(), 2);
 		detail::stack_pop pop(interpreter, 1);
 		return object(from_stack(interpreter, -1));
 	}

@@ -45,11 +45,22 @@ using namespace luabind::detail;
 namespace luabind {
 	namespace detail
 	{
-		LUABIND_API int property_tag(lua_State* L)
+		/*LUABIND_API int property_tag(lua_State* L)
 		{
 			lua_pushstring(L, "luabind: property_tag function can't be called");
 			lua_error(L);
 			return 0;
+		}*/
+
+		static PropertyTag g_propertyTag = nullptr;
+		LUABIND_API void set_property_tag(PropertyTag tag)
+		{
+			g_propertyTag = tag;
+		}
+
+		LUABIND_API PropertyTag get_property_tag()
+		{
+			return g_propertyTag;
 		}
 	}
 }
