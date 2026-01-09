@@ -18,7 +18,11 @@ import :detail.inheritance;
 namespace luabind {
 	namespace detail {
 
-		class_id const class_id_map::local_id_base = std::numeric_limits<class_id>::max() / 2;
+		class_id const &class_id_map::get_local_id_base()
+		{
+			static class_id const local_id_base = std::numeric_limits<class_id>::max() / 2;
+			return local_id_base;
+		}
 
 		namespace
 		{

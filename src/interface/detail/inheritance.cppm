@@ -58,17 +58,17 @@ export namespace luabind {
 			map_type m_classes;
 			class_id m_local_id;
 
-			static class_id const local_id_base;
+			static class_id const &get_local_id_base();
 		};
 
 		inline class_id_map::class_id_map()
-			: m_local_id(local_id_base)
+			: m_local_id(get_local_id_base())
 		{}
 
 		inline class_id class_id_map::get(type_id const& type) const
 		{
 			map_type::const_iterator i = m_classes.find(type);
-			if(i == m_classes.end() || i->second >= local_id_base) {
+			if(i == m_classes.end() || i->second >= get_local_id_base()) {
 				return unknown_class;
 			}
 			else {
@@ -81,13 +81,13 @@ export namespace luabind {
 			std::pair<map_type::iterator, bool> result = m_classes.insert(std::make_pair(type, 0));
 
 			if(result.second) result.first->second = m_local_id++;
-			assert(m_local_id >= local_id_base);
+			assert(m_local_id >= get_local_id_base());
 			return result.first->second;
 		}
 
 		inline void class_id_map::put(class_id id, type_id const& type)
 		{
-			assert(id < local_id_base);
+			assert(id < get_local_id_base());
 
 			std::pair<map_type::iterator, bool> result = m_classes.insert(
 				std::make_pair(type, 0));
@@ -95,7 +95,7 @@ export namespace luabind {
 			assert(
 				result.second
 				|| result.first->second == id
-				|| result.first->second >= local_id_base
+				|| result.first->second >= get_local_id_base()
 			);
 
 			result.first->second = id;
