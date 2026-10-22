@@ -449,9 +449,12 @@ export namespace luabind {
 					);
 
 					meta::init_order{
+						(std::get<ClassIndex>(argument_tuple).converter_postcall(L,
+							typename meta::get<decorated_list, ClassIndex>::type(),
+							meta::get<stack_indices, ClassIndex>::value), 0),
 						(std::get<ArgumentIndices>(argument_tuple).converter_postcall(L,
-						typename meta::get<typename traits::decorated_argument_list, ArgumentIndices>::type(),
-						meta::get<typename traits::stack_index_list, ArgumentIndices>::value), 0)...
+							typename meta::get<decorated_list, ArgumentIndices>::type(),
+							meta::get<stack_indices, ArgumentIndices>::value), 0)...
 					};
 				}
 			};
@@ -472,9 +475,12 @@ export namespace luabind {
 						);
 
 					meta::init_order{
+						(std::get<ClassIndex>(argument_tuple).converter_postcall(L,
+							typename meta::get<decorated_list, ClassIndex>::type(),
+							meta::get<stack_indices, ClassIndex>::value), 0),
 						(std::get<ArgumentIndices>(argument_tuple).converter_postcall(L,
-						typename meta::get<typename traits::decorated_argument_list, ArgumentIndices>::type(),
-						meta::get<typename traits::stack_index_list, ArgumentIndices>::value), 0)...
+							typename meta::get<decorated_list, ArgumentIndices>::type(),
+							meta::get<stack_indices, ArgumentIndices>::value), 0)...
 					};
 				}
 			};

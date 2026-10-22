@@ -132,6 +132,7 @@ set(LUABIND_USER_POLICY_MODULES
     interface/adopt_policy.cppm
     interface/out_value_policy.cppm
     interface/return_reference_to_policy.cppm
+    interface/return_self_policy.cppm
     interface/raw_policy.cppm
 )
 source_group("User Policies MODULES" FILES ${LUABIND_USER_POLICY_MODULES})

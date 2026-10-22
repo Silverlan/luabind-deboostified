@@ -108,6 +108,7 @@ export import :prefix;
 export import :pseudo.traits;
 export import :policies.raw;
 export import :policies.return_reference_to;
+export import :policies.return_self_policy;
 export import :scope;
 export import :set_package_preload;
 export import :shared_ptr_converter;
